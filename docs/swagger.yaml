@@ -1,0 +1,54 @@
+basePath: /api/v1
+definitions:
+  model.Movie:
+    properties:
+      artist:
+        type: string
+      description:
+        type: string
+      duration:
+        type: integer
+      genre:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      watch_url:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is collection of movie endpoint.
+  title: Movie API
+  version: 1.0.0
+paths:
+  /admin/movie:
+    post:
+      consumes:
+      - application/json
+      description: Admin create programme
+      parameters:
+      - description: body payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/model.Movie'
+      responses: {}
+      security:
+      - AdminAuth: []
+      summary: Admin create programme
+      tags:
+      - Admin
+securityDefinitions:
+  AdminAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+  UserAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
